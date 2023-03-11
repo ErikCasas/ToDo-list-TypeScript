@@ -24,6 +24,10 @@ const userSchema = new Schema({
     enabled:{
         type: Boolean,
         default: true
+    },
+    admin:{
+        type:Boolean,
+        default:false
     }
 },
 {

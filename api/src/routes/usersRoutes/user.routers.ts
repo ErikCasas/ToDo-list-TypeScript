@@ -1,5 +1,5 @@
 import { Router } from "express";
-import createUser from "../../controllers/user/createUSer";
+import createUser from "../../controllers/user/createUser";
 import getAllUsers from "../../controllers/user/getAllUsers";
 import getUser from "../../controllers/user/getUser";
 
