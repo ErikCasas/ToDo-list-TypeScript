@@ -16,7 +16,19 @@ const userSchema = new Schema({
         type:String,
         require:true,
         trim:true
+    },
+    notes:[{
+        type:Schema.Types.ObjectId,
+        ref:'Note' 
+    }],
+    enabled:{
+        type: Boolean,
+        default: true
     }
+},
+{
+  timestamps: false,
+  versionKey: false,
 });
 
 const User = new model('UserTodoApp', userSchema);

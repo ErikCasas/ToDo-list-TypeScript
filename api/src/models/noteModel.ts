@@ -19,7 +19,11 @@ const noteSchema = new Schema({
     delete:{
         type:Boolean,
         default:false
-    }
+    },
+    user:[{
+        type:Schema.Types.ObjectId,
+        ref:'User'
+    }]
 },
 {
   timestamps: false,
