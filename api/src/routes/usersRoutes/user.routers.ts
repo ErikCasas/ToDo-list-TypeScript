@@ -6,7 +6,8 @@ import getUser from "../../controllers/user/getUser";
 const router = Router();
 
 router.post('/createUser', createUser)
+router.post('/getUser', getUser)
+
 router.get('/getUsers', getAllUsers) 
-router.get('/getUser', getUser)
 
 export default router;

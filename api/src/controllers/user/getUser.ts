@@ -1,24 +1,22 @@
-import User from "../../models/userModel";
-import { MyResponse } from "../../types";
-import { Request } from "express"; 
+import User from '../../models/userModel';
+import bcrypt from 'bcrypt';
+import { MyResponse } from '../../types';
+import { Request } from 'express';
 
-const getUser =async (req:Request, res: MyResponse) => {
-    const { email, password } = req.body;
-    try {
-        const user = await User.finOne({email:email})
-        switch (user) {
-            case user.password!==password:
-                throw new Error('Wrong password')
-                break;
-                case !user :
-                throw new Error('non-existent user')
-                break;
-            default:
-                res.json(user);
-                break;
-        }
-    } catch ({message}) {
-        res.json({'error :>> ': message})
+const getUser = async (req: Request, res: MyResponse) => {
+  const { email, password } = req.body;
+  console.log(req.body);
+  try {
+    const user = await User.findOne({ email });
+    const acces = user === null
+    ?false
+    :await bcrypt.compare(password, user.password)
+    if(!acces){
+
     }
-}
+
+  } catch ({ message }) {
+    res.status(300).json({ 'error :>> ': message });
+  }
+};
 export default getUser;
